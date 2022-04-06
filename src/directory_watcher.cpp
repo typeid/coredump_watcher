@@ -11,6 +11,7 @@
 namespace {
 constexpr std::size_t event_buffer_size = 1024;
 }
+
 directory_watcher::directory_watcher(
     const std::filesystem::path &directory,
     std::function<void(std::string_view file_name)> on_file_creation_cb)
@@ -36,13 +37,11 @@ void directory_watcher::run() {
 
     for (std::size_t i = 0; i < read_size / sizeof(inotify_event); ++i) {
       const inotify_event &event = event_buffer.at(i);
-      if (event.len) {
-        if (event.mask & IN_CREATE) {
-          if (event.mask & IN_ISDIR) {
-            // New type is directory
-          } else {
-            m_on_file_creation_cb(event.name);
-          }
+      if (event.mask & IN_CREATE) {
+        if (event.mask & IN_ISDIR) {
+          // New type is directory
+        } else {
+          m_on_file_creation_cb(event.name);
         }
       }
     }
