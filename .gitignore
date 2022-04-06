@@ -1,0 +1,13 @@
+.cache/
+.vscode/
+build/
+log.html
+output.xml
+report.html
+tests/integration/log.html
+tests/integration/output.xml
+tests/integration/report.html
+tests/log.html
+tests/output.xml
+tests/report.html
+tests/integration/pkgdiff_reports/

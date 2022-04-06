@@ -1,0 +1,10 @@
+[requires]
+boost/1.78.0
+gflags/2.2.2
+libtar/1.2.20
+
+[build_requires]
+gtest/1.11.0
+
+[generators]
+cmake
